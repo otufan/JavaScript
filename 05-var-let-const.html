@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var x = 5;
+      var x;
+      const z = 4;
+
+      console.log(x, z);
+
+      let maxSafeInteger = Number.MAX_SAFE_INTEGER;
+      
+
+      //maxSafeInteger = 3;
+      console.log(maxSafeInteger);
+      var testTamSayi = 12381237439284732891273912834n;
+      console.log(testTamSayi);
+
+      console.log(testTamSayi + 5n == testTamSayi + 5n); //true
+      console.log(testTamSayi - 5n == testTamSayi - 6n); //false
+
+      console.log(maxSafeInteger + 5 == maxSafeInteger + 6); //true
+      console.log(maxSafeInteger - 5 == maxSafeInteger - 6); //false
+
+
+      var tanimsiz;
+      console.log(tanimsiz); //undefined
+
+      console.log(typeof(x)); // bu method ile verinin türünü veriyor
+      console.log(typeof(testTamSayi));
+      console.log(typeof(tanimsiz));
+
+      var a="5";
+      var b=2;
+      var c=a/b;
+      console.log(c);
+         
+
+    </script>
+  </body>
+</html>
