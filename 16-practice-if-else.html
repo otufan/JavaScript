@@ -7,17 +7,26 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <input type="number" id="txtSayi1">
-    <input type="number" id="txtSayi2">
-    <button id="btnTopla" onclick="topla()">ABC</button>
+    <input type="number" name="" id="txtFiyat">
+    <button id="btnHesapla" onclick="hesapla()">Hesapla</button>
+
     <div id="lblSonuc"></div>
+
     <script>
-        function topla(){
-            let sayi1 = document.querySelector("#txtSayi1").value;
-            let sayi2 = document.querySelector('#txtSayi2').value;
-            let sonuc = Number(sayi1) + Number(sayi2);
-            document.querySelector("#lblSonuc").innerHTML = `Sonuç = <b>${sonuc}</b>`;
+        function hesapla(){
+            let fiyat = document.querySelector("#txtFiyat").value;
+
+            if(fiyat>500){
+                fiyat =  fiyat - fiyat*10/100;
+            }
+            else if(fiyat>300){
+                fiyat =  fiyat - fiyat*7/100;  
+            }
+            else{
+                fiyat =  fiyat - fiyat*5/100;
+            }
+
+            document.querySelector("#lblSonuc").innerText = fiyat;
         }
     </script>
 </body>
