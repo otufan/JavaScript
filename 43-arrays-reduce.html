@@ -7,58 +7,36 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" name="" id="txtNot1" placeholder="1.Notu giriniz">
-    <input type="text" name="" id="txtNot2" placeholder="2.Notu giriniz">
-    <button id="btnHesapla">Hesapla</button>
-    <h3>Yıl sonu notu: <span id="sonuc"></span></h3>
-
+    
     <script>
-        document.querySelector("#btnHesapla").addEventListener("click", ()=>{
-            let not1 = document.querySelector("#txtNot1");
-            let not2 = document.querySelector("#txtNot2");
+        const koordinatlar = [100, 150, 32, 43, 20];
 
-            if(!not1.value || isNaN(not1.value) || not1.value<0 || not1.value>100){
-                alert("1.Not için geçerli bir değer giriniz");
-                not1.focus();
-                not1.value = "";
-                return;
-            }
-
-            if(!not2.value || isNaN(not2.value) || not2.value<0 || not2.value>100){
-                alert("2.Not için geçerli bir değer giriniz");
-                not2.focus();
-                not2.value = "";
-                return;
-            }
-
-            not1 = Number(not1.value);
-            not2 = Number(not2.value);
-
-            const ortalama = (not1 + not2) /2;
-            let harfNot = "";
-
-            switch(true){
-                case ortalama >= 90:
-                    harfNot = "A";
-                    break;
-                case ortalama >=80:
-                    harfNot = "B";
-                    break;
-                case ortalama >=70:
-                    harfNot = "C";
-                    break;
-                case ortalama >=50:
-                    harfNot = "D";
-                    break;
-                default:
-                    harfNot = "F";
-            }
+        const sontoplam = koordinatlar.reduce( (toplam, koord) => {
+            console.log(`toplam=${toplam} koord=${koord}`);
+            return toplam + koord;
             
-            document.querySelector("#sonuc").innerHTML = harfNot;
+        },0 );
 
+        console.log(`Son tplam=${sontoplam}`);
+
+
+        const soncarpim = koordinatlar.reduce( (carpim, koord) => {
+            console.log(`çarpım=${carpim} koord=${koord}`);
+            return carpim * koord;
+            
         });
+        console.log(`Son çarpım=${soncarpim}`);
+
+
+        const maaslar = [12,15,8,20,25,14,12,10,7,10];
+        const toplmaMaas = maaslar.filter(m=>m<=15)
+        .map(m=>m*1.2)
+        .reduce( (toplam, m) => toplam+m,0);
+
+        console.log(toplmaMaas);
+
+
 
     </script>
-
 </body>
 </html>

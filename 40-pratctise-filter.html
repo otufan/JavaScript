@@ -7,58 +7,42 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" name="" id="txtNot1" placeholder="1.Notu giriniz">
-    <input type="text" name="" id="txtNot2" placeholder="2.Notu giriniz">
-    <button id="btnHesapla">Hesapla</button>
-    <h3>Yıl sonu notu: <span id="sonuc"></span></h3>
 
+    <input type="text" id="txtHarf">
+
+    <ul id="liste">
+
+    </ul>
+
+    
     <script>
-        document.querySelector("#btnHesapla").addEventListener("click", ()=>{
-            let not1 = document.querySelector("#txtNot1");
-            let not2 = document.querySelector("#txtNot2");
+        const bireyler = ["Mustafa", "Murat", "Ahmet", "mustafa", "Ayşe", "Canan"];
 
-            if(!not1.value || isNaN(not1.value) || not1.value<0 || not1.value>100){
-                alert("1.Not için geçerli bir değer giriniz");
-                not1.focus();
-                not1.value = "";
-                return;
+        const filtrele = (harf) => {
+            let strBireyler = "";
+            let yeniDizi = bireyler;
+
+            if(harf){
+                yeniDizi = yeniDizi.filter( 
+                    birey => birey.toLocaleLowerCase().startsWith(harf.toLocaleLowerCase()) 
+                );
             }
 
-            if(!not2.value || isNaN(not2.value) || not2.value<0 || not2.value>100){
-                alert("2.Not için geçerli bir değer giriniz");
-                not2.focus();
-                not2.value = "";
-                return;
-            }
+            yeniDizi.forEach(birey=> {
+                strBireyler+=`<li>${birey}</li>`;
+            });
 
-            not1 = Number(not1.value);
-            not2 = Number(not2.value);
+            document.querySelector("#liste").innerHTML=strBireyler;
+        }
 
-            const ortalama = (not1 + not2) /2;
-            let harfNot = "";
+        filtrele();
 
-            switch(true){
-                case ortalama >= 90:
-                    harfNot = "A";
-                    break;
-                case ortalama >=80:
-                    harfNot = "B";
-                    break;
-                case ortalama >=70:
-                    harfNot = "C";
-                    break;
-                case ortalama >=50:
-                    harfNot = "D";
-                    break;
-                default:
-                    harfNot = "F";
-            }
-            
-            document.querySelector("#sonuc").innerHTML = harfNot;
 
+        document.querySelector("#txtHarf").addEventListener('input', (e)=> {
+            console.log(e.target.value);
+            filtrele(e.target.value);
         });
 
     </script>
-
 </body>
 </html>

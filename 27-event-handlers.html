@@ -7,57 +7,41 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1 id="baslik">Merhaba</h1>
+
+    <button id="btnClick1">Tıkla1</button>
+    <button id="btnClick2">Tıkla2</button>
+    <button id="btnClick3">Tıkla3</button>
+    <button id="btnClick4">Tıkla4</button>
+
 
 
     <script>
-        let x = 10;
-        var y = 30;
-
-        function test1(){
-            x=20;
-            console.log(x); //20
-        }
-
-        function test2(){
-            let x=50;
-            console.log(x); //50
-        }
-
-        function test3(){
-            var y = 50;
-            console.log(y);
+        const sayHello = function(){
+            alert("Hello");
         }
 
 
-        function test4(){
-            var x = "Merhaba";
-            let y =  "DÜnya";
+        document.querySelector("#baslik").onclick = sayHello;
 
-            if(true){
-                var a = "Ankara";
-                let b = "İzmir";
-            }
 
-            console.log(x,y,a);
-            console.log(b);
+        document.querySelector("#btnClick1").onclick = function(){
+            alert("Tıklandı");
+        }
+      
+
+        document.querySelector("#btnClick2").onclick = () => {
+            alert("Tıklandı");
         }
 
-        console.log(x); //10
-        test1();
-        console.log(x); // 20
-        test2();
-        console.log(++x); //21
+        document.querySelector("#btnClick3").addEventListener('click', sayHello);
 
 
-        console.log(y);
-        test3();
-        console.log(++y);
-
-        test4();
-
-
-
+        document.querySelector("#btnClick4").addEventListener('click', (e)=>{
+            console.log(e);
+            alert("Tıklandı");
+        });
+        
 
 
     </script>

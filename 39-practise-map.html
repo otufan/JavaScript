@@ -7,58 +7,35 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" name="" id="txtNot1" placeholder="1.Notu giriniz">
-    <input type="text" name="" id="txtNot2" placeholder="2.Notu giriniz">
-    <button id="btnHesapla">Hesapla</button>
-    <h3>Yıl sonu notu: <span id="sonuc"></span></h3>
+    
 
     <script>
-        document.querySelector("#btnHesapla").addEventListener("click", ()=>{
-            let not1 = document.querySelector("#txtNot1");
-            let not2 = document.querySelector("#txtNot2");
-
-            if(!not1.value || isNaN(not1.value) || not1.value<0 || not1.value>100){
-                alert("1.Not için geçerli bir değer giriniz");
-                not1.focus();
-                not1.value = "";
-                return;
+        const tlFiyatlar = [100, 150, 100, 50, 80, 562, 10, 32];
+        
+        // Çok satırlı versiyon
+        const yeniFiyatlar = tlFiyatlar.map(fiyat => {
+            if(fiyat>100){
+                return (fiyat*1.10).toFixed(2);
             }
-
-            if(!not2.value || isNaN(not2.value) || not2.value<0 || not2.value>100){
-                alert("2.Not için geçerli bir değer giriniz");
-                not2.focus();
-                not2.value = "";
-                return;
+            else{
+                return (fiyat*1.15).toFixed(2);
             }
-
-            not1 = Number(not1.value);
-            not2 = Number(not2.value);
-
-            const ortalama = (not1 + not2) /2;
-            let harfNot = "";
-
-            switch(true){
-                case ortalama >= 90:
-                    harfNot = "A";
-                    break;
-                case ortalama >=80:
-                    harfNot = "B";
-                    break;
-                case ortalama >=70:
-                    harfNot = "C";
-                    break;
-                case ortalama >=50:
-                    harfNot = "D";
-                    break;
-                default:
-                    harfNot = "F";
-            }
-            
-            document.querySelector("#sonuc").innerHTML = harfNot;
-
         });
 
-    </script>
 
+        // Tek satırlı versiyon
+        const yeniFiyatlar2 = tlFiyatlar.map(fiyat => fiyat>100 ? (fiyat*1.10).toFixed(2) : (fiyat*1.15).toFixed(2));
+       
+
+        console.log(tlFiyatlar);
+        console.log(yeniFiyatlar);
+        console.log(yeniFiyatlar2);
+
+
+
+
+
+
+    </script>
 </body>
 </html>

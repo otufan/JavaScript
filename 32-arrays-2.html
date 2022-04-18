@@ -7,58 +7,48 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" name="" id="txtNot1" placeholder="1.Notu giriniz">
-    <input type="text" name="" id="txtNot2" placeholder="2.Notu giriniz">
-    <button id="btnHesapla">Hesapla</button>
-    <h3>Yıl sonu notu: <span id="sonuc"></span></h3>
+    <select id="baslik">
+    </select>
+
 
     <script>
-        document.querySelector("#btnHesapla").addEventListener("click", ()=>{
-            let not1 = document.querySelector("#txtNot1");
-            let not2 = document.querySelector("#txtNot2");
+        const meyveler = ["Elma", "Armut", "Muz", "Kivi"];
+        console.log(meyveler);
+        meyveler.pop();
+        console.log(meyveler);
+        meyveler.push("Ananas");
+        console.log(meyveler);
+        meyveler.shift();
+        console.log(meyveler);
+        meyveler.unshift("Çilek");
+        console.log(meyveler);
+        meyveler.reverse();
+        console.log(meyveler);
+        meyveler.sort();
+        console.log(meyveler);
+        meyveler.sort( (a,b) =>  a.localeCompare(b, 'tr')).reverse();
+        console.log(meyveler);
 
-            if(!not1.value || isNaN(not1.value) || not1.value<0 || not1.value>100){
-                alert("1.Not için geçerli bir değer giriniz");
-                not1.focus();
-                not1.value = "";
-                return;
-            }
+        meyveler.splice(2,0,"Ayva","Elma","Muz");
+        console.log(meyveler);
 
-            if(!not2.value || isNaN(not2.value) || not2.value<0 || not2.value>100){
-                alert("2.Not için geçerli bir değer giriniz");
-                not2.focus();
-                not2.value = "";
-                return;
-            }
 
-            not1 = Number(not1.value);
-            not2 = Number(not2.value);
+        document.querySelector("#baslik").innerHTML = "<option>" + meyveler.join("</option><option>") + "</option>";
 
-            const ortalama = (not1 + not2) /2;
-            let harfNot = "";
 
-            switch(true){
-                case ortalama >= 90:
-                    harfNot = "A";
-                    break;
-                case ortalama >=80:
-                    harfNot = "B";
-                    break;
-                case ortalama >=70:
-                    harfNot = "C";
-                    break;
-                case ortalama >=50:
-                    harfNot = "D";
-                    break;
-                default:
-                    harfNot = "F";
-            }
-            
-            document.querySelector("#sonuc").innerHTML = harfNot;
 
-        });
+
+        const sayilar = [5, 14, 2, 167];
+        
+        sayilar.sort( (a,b) => a-b );
+
+        console.log(sayilar);
+
+
+        const yeniDizi = meyveler.concat(sayilar, "M", "Ş", ["Ali", "Veli", "Ayşe"]);
+        console.log(yeniDizi);
+
 
     </script>
-
 </body>
 </html>
